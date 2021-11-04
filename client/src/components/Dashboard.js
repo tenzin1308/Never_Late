@@ -71,6 +71,7 @@ export default function Dashboard(props) {
         setTimeout(() => {
             setLoading(false)
         },fetchAssignment())
+    // eslint-disable-next-line
     },[])
 
     return (
