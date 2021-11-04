@@ -1,6 +1,6 @@
 # NeverLate
 
-<img src="src/static/NeverLate-logos.jpeg" width="100" height="100">
+<img src="client/src/static/NeverLate-logos.jpeg" width="100" height="100">
 
 # Description
 
@@ -48,27 +48,34 @@ git clone https://github.com/ValeryiaPilchuk/Never_Late.git
 cd neverlate
 ```
 
+### `Run the backend of the project`
+
+```
+node server.js
+```
+
+This will start the backend of the project in the development mode.<br>
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
+### `Run the frontend of the project`
+
+- Change to client folder
+
+```
+cd client
+```
+
 - Install the needed dependencies
 
 ```
 npm install
 ```
 
-### `Run the frontend of the project`
+- Run the client server
 
 ```
-npm start
-```
-
-This will start the frontend of the project in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### `Run the backend of the project`
-
-```
-cd server
 npm start
 ```
 
 This will start the project in the development mode.<br>
-Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

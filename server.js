@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 
-// 
+// MongoDB connection
 mongoose.connect(
     process.env.NeverLate_DB_URI || 'mongodb://localhost/neverlate',
     {
@@ -22,11 +22,6 @@ mongoose.connect(
         useNewUrlParser:true
     }
 )
-
-// MongoDB connection
-mongoose.connection.on('connected', () => {
-    console.log('Mongoose is connected!!!');
-})
 
 //
 app.use('/profile', neverLateRouter)
@@ -45,8 +40,7 @@ if (process.env.NODE_ENV === "production") {
     })
 }
 // 
-const port = process.env.PORT || 5000
-app.listen(port, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log(`Server started at http://localhost:${port}`);
 })
 
