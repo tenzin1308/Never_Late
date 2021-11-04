@@ -25,7 +25,9 @@ mongoose.connect(
 
 //
 app.use('/profile', neverLateRouter)
-
+app.use('/', function (req, res) {
+    res.send('Hello World');
+})
 // 
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
