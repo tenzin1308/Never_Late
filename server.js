@@ -2,6 +2,8 @@ import express from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import cors from 'cors'
+// Accessing the path module
+import path from "path"
 //
 import neverLateRouter from './routers/neverLateRouter.js'
 
@@ -33,16 +35,26 @@ app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
 });
 
-// Heroku
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-    const path = require("path")
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-    })
-}
 // 
 const port = process.env.PORT || 5000
+
+// Heroku
+// // Step 1:
+// app.use(express.static(path.resolve(__dirname, "./client/build")));
+// // Step 2:
+// app.get("*", function (request, response) {
+//   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+// });
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.resolve(__dirname, "./client/build")));
+    const path = require("path")
+    app.get("*", function (request, response) {
+        response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+    })
+}
+
+
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);
 })
