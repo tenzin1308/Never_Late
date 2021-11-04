@@ -1,0 +1,23 @@
+.homePage {
+  text-align: center;
+  background-image: url("../static/background_image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 620px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 90px;
+  margin-top: 50px;
+}
+h1 {
+  font-size: 70px;
+  color: aliceblue;
+}
+
+h3 {
+  font-size: 30px;
+  color: aliceblue;
+}
