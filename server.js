@@ -27,9 +27,7 @@ mongoose.connect(
 
 //
 app.use('/profile', neverLateRouter)
-app.use('/', function (req, res) {
-    res.send('Hello World');
-})
+
 // 
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
@@ -46,13 +44,18 @@ const port = process.env.PORT || 8000
 //   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 // });
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.resolve(__dirname, "./client/build")));
-    const path = require("path")
-    app.get("*", function (request, response) {
-        response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-    })
-}
+const __dirname = path.resolve();
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.get("/*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+})
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.resolve(__dirname, "./client/build")));
+    
+//     app.get("/", function (request, response) {
+//         response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+//     })
+// }
 
 
 app.listen(port, () => {
