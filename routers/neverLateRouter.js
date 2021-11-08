@@ -1,7 +1,7 @@
 import express from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import Cryptr from 'cryptr'
-import NeverLate from '../models/neverLateModel.js'
+import NeverLate from '../models/NeverLateModel.js'
 
 const neverLateRouter = express.Router()
 const cryptr = new Cryptr('mySuperSecretKey')
