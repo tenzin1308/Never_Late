@@ -1,5 +1,7 @@
 import React from 'react'
 import './HomePage.css';
+import Feature from './Feature';
+
 
 export default function Home() {
     return (
@@ -15,6 +17,7 @@ export default function Home() {
             </div>  
             
             </div>
+            <Feature/>
         </>
     )
 }
