@@ -22,7 +22,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i
-      - run: npm run build
+      - run: npm run client-install
+      - run: npm run client-build
       - run: pm2 stop 0
       - run: pm2 start 0
       - run: pm2 save
