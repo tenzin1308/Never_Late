@@ -13,15 +13,15 @@ USERNAME = sys.argv[2]
 PASSWORD = sys.argv[3]
 
 # connection to MongoDB
-client = MongoClient('localhost', 27017)
-db = client.neverlate
+client = MongoClient('mongodb+srv://Anil:Bhusal@cluster0.kjwlj.mongodb.net')
+db = client.NeverLate
 collection_name = db.neverlates
 
 # driver
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(
-    executable_path='/Users/tenzintashi/Downloads/CSc 456 - Topic in SE/neverlate/python/chromedriver', options=chrome_options)  # change the path if it doesn't work
+    executable_path='./python/chromedriver', options=chrome_options)  # change the path if it doesn't work
 
 # login
 driver.get('https://bbhosted.cuny.edu/webapps/calendar/viewPersonal')

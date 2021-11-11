@@ -30,7 +30,7 @@ neverLateRouter.post(
                         return res.send(500, {error: err})
                     }
                     // Run the python script to scrape the BB
-                    const pyBBhosting = spawn('python3', ['/Users/tenzintashi/Downloads/CSc 456 - Topic in SE/neverlate/python/BBScraping.py', req.body.user, req.body.username, req.body.password]);
+                    const pyBBhosting = spawn('python3', ['./python/BBScraping.py', req.body.user, req.body.username, req.body.password]);
 
                     pyBBhosting.stdout.on('data', (data) => {
                         console.log('code successfully execcuted');
@@ -56,7 +56,7 @@ neverLateRouter.post(
                     return next(error)
                 } else {
                     // Run the python script to scrape the BB
-                    const pyBBhosting = spawn('python3', ['/Users/tenzintashi/Downloads/CSc 456 - Topic in SE/neverlate/python/BBScraping.py', req.body.user, req.body.username, req.body.password]);
+                    const pyBBhosting = spawn('python3', ['./python/BBScraping.py', req.body.user, req.body.username, req.body.password]);
 
                     pyBBhosting.stdout.on('data', (data) => {
                         console.log('code successfully execcuted');
@@ -85,7 +85,7 @@ neverLateRouter.get(
             user.password = cryptr.decrypt(user.password)
             // Run the python script to scrape the BB
             // change the path if it doesn't work
-            const pyBBhosting = spawn('python3', ['/Users/tenzintashi/Downloads/CSc 456 - Topic in SE/neverlate/python/BBScraping.py', req.query.user, user.username, user.password]);
+            const pyBBhosting = spawn('python3', ['./python/BBScraping.py', req.query.user, user.username, user.password]);
 
             pyBBhosting.stdout.on('data', (data) => {
                 console.log('code successfully execcuted');
