@@ -21,7 +21,7 @@ collection_name = db.neverlates
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(
-    executable_path='./python/chromedriver', options=chrome_options)  # change the path if it doesn't work
+    executable_path='/var/www/actions-runner/_work/Never_Late/Never_Late/python/chromedriver', options=chrome_options)  # change the path if it doesn't work
 
 # login
 driver.get('https://bbhosted.cuny.edu/webapps/calendar/viewPersonal')
