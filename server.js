@@ -44,7 +44,7 @@ const port = process.env.PORT || 8000
 //   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 // });
 
-// const __dirname = path.resolve();
+const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("/*", function (request, response) {
     response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
