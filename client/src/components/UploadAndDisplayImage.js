@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import React, { useState } from "react";
 const UploadAndDisplayImage = ({user, email}) => {
@@ -26,6 +27,7 @@ const UploadAndDisplayImage = ({user, email}) => {
 
         <br />
         <button onClick={()=>handleUploader()}>Upload</button>
+
         </div>
       )}
       <br />
@@ -36,6 +38,7 @@ const UploadAndDisplayImage = ({user, email}) => {
         onChange={(event) => {
           console.log(event.target.files[0]);
           setSelectedImage(URL.createObjectURL(event.target.files[0]));
+
         }}
       />
     </div>

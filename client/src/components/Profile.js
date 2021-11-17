@@ -40,6 +40,7 @@ export default function Profile(props) {
                                      */}
                                      <h> Profile Picture </h>
                                     <Upload user={props.auth.user.username} email={props.auth.user.attributes.email}/>                        
+
                                     {/* <h3 className="m0 text-bold">Patrick Star</h3> */}
                                     {/* <div className="mv-lg">
                                          <p>Freshman</p>
