@@ -2,13 +2,29 @@ import express from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import Cryptr from 'cryptr'
 import NeverLate from '../models/NeverLateModel.js'
-
+import multer from 'multer';
 import { spawn } from 'child_process'
 
 
 
 const neverLateRouter = express.Router()
 const cryptr = new Cryptr('mySuperSecretKey')
+
+// Step 5 - set up multer for storing uploaded files
+
+
+
+var storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, 'uploads')
+	},
+	filename: (req, file, cb) => {
+		cb(null, file.fieldname + '-' + Date.now())
+	}
+});
+
+var upload = multer({ storage: storage });
+
 
 
 neverLateRouter.post(
@@ -126,7 +142,38 @@ neverLateRouter.get(
 //     })
 // })
 
+neverLateRouter.get('/', (req, res) => {
+    NeverLate.find({}, (err, items) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+        else {
+            res.render('imagesPage', { items: items });
+        }
+    });
+});
 
+neverLateRouter.post('/', upload.single('image'), (req, res, next) => {
+    console.log(req.body.img)
+    var obj = {
+        user: req.body.user,
+        email: req.body.email,
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    NeverLate.create(obj, (err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            // item.save();
+            res.redirect('/');
+        }
+    });
+});
 
 
 

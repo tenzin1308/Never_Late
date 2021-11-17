@@ -39,7 +39,8 @@ export default function Profile(props) {
                                     {/* <div className="pv-lg"><img className="center-block img-responsive img-circle img-thumbnail thumb96" src="https://i.redd.it/1krwuhtbr7a71.jpg" alt="Contact"/></div>
                                      */}
                                      <h> Profile Picture </h>
-                                    <Upload/>
+                                    <Upload user={props.auth.user.username} email={props.auth.user.attributes.email}/>                        
+
                                     {/* <h3 className="m0 text-bold">Patrick Star</h3> */}
                                     {/* <div className="mv-lg">
                                          <p>Freshman</p>

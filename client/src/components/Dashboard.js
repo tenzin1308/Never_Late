@@ -89,7 +89,7 @@ export default function Dashboard(props) {
                     <Grid container display="grid" gridAutoFlow="column" spacing={1}>
                         <Grid item>
                             <Paper sx={{ textAlign: "center", padding: "0", minHeight: "45vh", width: "100%", minWidth: "300px" }} >
-                                 <AssignmentList/>
+                                 <AssignmentList assignments={assignments}/>
                             </Paper>
                         
                         </Grid>
