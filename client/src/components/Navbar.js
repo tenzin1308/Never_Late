@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import  './Navbar.css';
 import { Link } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu';
+import logo from '../static/NeverLate-logos.jpeg';
 
 
 
@@ -29,6 +30,7 @@ export default class Navbar extends Component {
                 <div className="navbar-brand">
                     <Link className="navbar-item" to="/" exact style={{textDecoration:'none'}}>
                         {/* Replace this part with the logo of the company */}
+                        <img src={logo} alt="" className="logo" />
                         NeverLate
                     </Link>
                 </div>
