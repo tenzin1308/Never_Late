@@ -37,7 +37,6 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 8000
 
 
-
 if (process.env.NODE_ENV === "production") {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, "./client/build")));
