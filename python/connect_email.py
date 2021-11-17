@@ -1,9 +1,16 @@
+#import library 
 import xlrd
 import time
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+"""
+    This file is for send reminder email to users.
+"""
 
+"""
+    have a excel to store dummmy data 
+"""
 path = "clients.xlsx"
 openFile = xlrd.open_workbook(path)
 sheet = openFile.sheet_by_name('clients')
@@ -22,13 +29,18 @@ for k in range(sheet.nrows-1):
         hw.append(count_hw)
         name.append(client)
 
-
+"""
+    using smtplib.smtp as sender email
+"""
 email = 'some@gmail.com' 
 password = 'pass' 
 server = smtplib.SMTP('smtp.gmail.com', 123)
 server.starttls()
 server.login(email, password)
 
+"""
+    content of email
+"""
 for mail_to in mail_list:
     send_to_email = mail_to
     find_des = mail_list.index(send_to_email) 
