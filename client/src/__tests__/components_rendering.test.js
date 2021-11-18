@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// import '@testing-library/jest-dom'
+import '@testing-library/jest-dom'
 
 // Component to test
 import Calendar from "../components/Calendar";
@@ -20,16 +20,10 @@ import ChangePasswordConfirmation from "../components/authentication/ChangePassw
 import ForgotPassword from "../components/authentication/ForgotPassword"
 import ForgotPasswordVerification from "../components/authentication/ForgotPasswordVerification"
 
+
+// import {render, cleanup, fireEvent, screen} from '@testing-library/react'
 // afterEach(cleanup);
-// import {render,cleanup, fireEvent, screen} from '@testing-library/react'
 
-
-
-
-// it("Dashboard renders without crashing", ()=>{
-//   const div = document.createElement("div");
-//   ReactDOM.render(<Dashboard></Dashboard>, div)
-// })
 
 it("Login renders without crashing", ()=>{
   const div = document.createElement("div");
@@ -71,6 +65,18 @@ it("Footer renders without crashing", ()=>{
   ReactDOM.render(<Footer></Footer>, div)
 })
 
+
+
+it("Feature renders without crashing", ()=>{
+  const div = document.createElement("div");
+  ReactDOM.render(<Feature></Feature>, div)
+})
+
+// it("Navbar renders without crashing", ()=>{
+//   const div = document.createElement("div");
+//   ReactDOM.render(<Navbar></Navbar>, div)
+// })
+
 // it("Signup renders without crashing", ()=>{
 //   const div = document.createElement("div");
 //   ReactDOM.render(<Signup></Signup>, div)
@@ -87,14 +93,8 @@ it("Footer renders without crashing", ()=>{
 //   ReactDOM.render(<Calendar></Calendar>, div)
 // })
 
-it("Feature renders without crashing", ()=>{
-  const div = document.createElement("div");
-  ReactDOM.render(<Feature></Feature>, div)
-})
 
-// it("Navbar renders without crashing", ()=>{
+// it("Dashboard renders without crashing", ()=>{
 //   const div = document.createElement("div");
-//   ReactDOM.render(<Navbar></Navbar>, div)
+//   ReactDOM.render(<Dashboard></Dashboard>, div)
 // })
-
-

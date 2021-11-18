@@ -8,21 +8,12 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
-
-
-
-
-
-// Dummy 
-
-
 export default function AssignmentList({assignments}) {
   const rows = assignments;
   return (
 
    
     <TableContainer component={Paper}>
- {console.log(assignments)}
       <Table  >
 
         <TableHead sx = {{bgcolor:'#fffbf2'}}>
