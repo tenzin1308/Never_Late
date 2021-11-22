@@ -8,7 +8,6 @@ import fs from 'fs'
 import path from "path"
 //
 import neverLateRouter from './routers/neverLateRouter.js'
-import NeverLate from "./models/NeverLateModel.js"
 
 dotenv.config()
 
