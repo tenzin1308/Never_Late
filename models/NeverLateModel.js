@@ -8,10 +8,11 @@ const neverLateSchema = new mongoose.Schema(
             require: true,
             unique: true
         },
-        img:
+        imageUrl:
           {
-            data: Buffer,
-            contentType: String
+            type: String
+            // data: Buffer,
+            // contentType: String
           },
         email: {
             type: String,

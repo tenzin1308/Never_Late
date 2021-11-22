@@ -2,30 +2,10 @@ import express from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import Cryptr from 'cryptr'
 import NeverLate from '../models/NeverLateModel.js'
-import multer from 'multer';
 import { spawn } from 'child_process'
-
-
 
 const neverLateRouter = express.Router()
 const cryptr = new Cryptr('mySuperSecretKey')
-
-// Step 5 - set up multer for storing uploaded files
-
-
-
-var storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, 'uploads')
-	},
-	filename: (req, file, cb) => {
-		cb(null, file.fieldname + '-' + Date.now())
-	}
-});
-
-var upload = multer({ storage: storage });
-
-
 
 neverLateRouter.post(
     '/update',
@@ -129,55 +109,30 @@ neverLateRouter.get(
 //     })
 // })
 
-// neverLateRouter.route('/update').put((req, res, next) => {
-//     neverLatePort.findOne({ user: req.body.user }, {
-//         $set: req.body
-//     }, (error, data) => {
-//         if (error) {
-//             return next(error)
-//         } else {
-//             res.json(data)
-//             console.log('User updated successfully !')
-//         }
-//     })
-// })
 
-neverLateRouter.get('/', (req, res) => {
-    NeverLate.find({}, (err, items) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send('An error occurred', err);
-        }
-        else {
-            res.render('imagesPage', { items: items });
-        }
-    });
-});
-
-neverLateRouter.post('/', upload.single('image'), (req, res, next) => {
-    console.log(req.body.img)
-    var obj = {
-        user: req.body.user,
-        email: req.body.email,
-        img: {
-            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-            contentType: 'image/png'
-        }
+neverLateRouter.post('/image/upload', expressAsyncHandler(async (req, res, next) => {
+    // console.log(req.body)
+    const user = await NeverLate.findOne({user: req.body.user});
+    if (user){
+        NeverLate.findOneAndUpdate({user: req.body.user}, 
+            {imageUrl: req.body.imageURL},
+            {upsert: true},
+            function (err, doc) {
+                if (err) {
+                    return res.status(500).send({error: err})
+                }
+                return res.status(200).send("Successful")
+            })
     }
-    NeverLate.create(obj, (err, item) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            // item.save();
-            res.redirect('/');
-        }
-    });
-});
+}));
 
-
-
-
-
+neverLateRouter.get('/image/get', expressAsyncHandler(async (req, res, next) => {
+    // console.log('body',req.query.user)
+    const user = await NeverLate.findOne({user: req.query.user})
+    if (!user){
+        return res.status(500).send({error: err})
+    }
+    return res.status(200).send(user)
+}));
 
 export default neverLateRouter;

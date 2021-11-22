@@ -8,6 +8,7 @@ import fs from 'fs'
 import path from "path"
 //
 import neverLateRouter from './routers/neverLateRouter.js'
+import NeverLate from "./models/NeverLateModel.js"
 
 dotenv.config()
 
@@ -56,4 +57,3 @@ if (process.env.NODE_ENV === "production") {
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);
 })
-
