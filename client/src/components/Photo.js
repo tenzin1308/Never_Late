@@ -8,7 +8,7 @@ function Photo({user}){
 const [imageSelected, setImageSelected] = useState("");
 const [publicId, setPublicId] = useState("");
 
-
+    
 useEffect(() => {
     Axios.get(`/profile/image/get?user=${user}`)
     .then((res) => {
@@ -18,6 +18,7 @@ useEffect(() => {
     .catch(err => {
         console.log(err)
     });
+    // eslint-disable-next-line 
 },[])
 
 
