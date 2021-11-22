@@ -7,8 +7,6 @@ import { spawn } from 'child_process'
 const neverLateRouter = express.Router()
 const cryptr = new Cryptr('mySuperSecretKey')
 
-
-
 neverLateRouter.post(
     '/update',
     expressAsyncHandler(async (req, res, next) => {
@@ -99,8 +97,42 @@ neverLateRouter.get(
         }
         return res.send('User not found')
     })
-)
+);
+
+// neverLateRouter.route('/calendar').get((req, res, next) => {
+//     neverLatePort.find({ user: req.query.user }, (error, data) => {
+//         if (error) {
+//             return next(error)
+//         } else {
+//             res.json(data)
+//         }
+//     })
+// })
 
 
+neverLateRouter.post('/image/upload', expressAsyncHandler(async (req, res, next) => {
+    // console.log(req.body)
+    const user = await NeverLate.findOne({user: req.body.user});
+    if (user){
+        NeverLate.findOneAndUpdate({user: req.body.user}, 
+            {imageUrl: req.body.imageURL},
+            {upsert: true},
+            function (err, doc) {
+                if (err) {
+                    return res.status(500).send({error: err})
+                }
+                return res.status(200).send("Successful")
+            })
+    }
+}));
+
+neverLateRouter.get('/image/get', expressAsyncHandler(async (req, res, next) => {
+    // console.log('body',req.query.user)
+    const user = await NeverLate.findOne({user: req.query.user})
+    if (!user){
+        return res.status(500).send({error: err})
+    }
+    return res.status(200).send(user)
+}));
 
 export default neverLateRouter;
