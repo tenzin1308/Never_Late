@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, {useState} from 'react'
 import './Profile.css';
-import Upload from './UploadAndDisplayImage.js'
+import Photo from './Photo';
+// import Upload from './UploadAndDisplayImage.js'
 
 export default function Profile(props) {
     const [phoneNumber, setPhonenumber] = useState(null)
@@ -27,7 +28,7 @@ export default function Profile(props) {
         
     }
 
-
+    
 
     return (
         !props.auth.isAuthenticated ? props.history.push("/") :
@@ -38,8 +39,9 @@ export default function Profile(props) {
                                 <div className="panel-body text-center">
                                     {/* <div className="pv-lg"><img className="center-block img-responsive img-circle img-thumbnail thumb96" src="https://i.redd.it/1krwuhtbr7a71.jpg" alt="Contact"/></div>
                                      */}
-                                     <h> Profile Picture </h>
-                                    <Upload user={props.auth.user.username} email={props.auth.user.attributes.email}/>                        
+                                     <h> Profile Picture </h> 
+                                      <Photo user={props.auth.user.username} />
+                                    {/* <Upload user={props.auth.user.username} email={props.auth.user.attributes.email}/>                         */}
 
                                     {/* <h3 className="m0 text-bold">Patrick Star</h3> */}
                                     {/* <div className="mv-lg">
