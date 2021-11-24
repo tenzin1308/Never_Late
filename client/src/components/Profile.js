@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, {useState} from 'react'
 import './Profile.css';
+import Photo from './Photo';
+// import Upload from './UploadAndDisplayImage.js'
 
 export default function Profile(props) {
     const [phoneNumber, setPhonenumber] = useState(null)
@@ -25,6 +27,9 @@ export default function Profile(props) {
         
         
     }
+
+    
+
     return (
         !props.auth.isAuthenticated ? props.history.push("/") :
             <div className="container bootstrap snippets bootdey">
@@ -32,17 +37,22 @@ export default function Profile(props) {
                         <div className="col-md-4">
                             <div className="panel panel-default">
                                 <div className="panel-body text-center">
-                                    <div className="pv-lg"><img className="center-block img-responsive img-circle img-thumbnail thumb96" src="https://i.redd.it/1krwuhtbr7a71.jpg" alt="Contact"/></div>
-                                    <h3 className="m0 text-bold">Patrick Star</h3>
-                                    <div className="mv-lg">
-                                        <p>Freshman</p>
+                                    {/* <div className="pv-lg"><img className="center-block img-responsive img-circle img-thumbnail thumb96" src="https://i.redd.it/1krwuhtbr7a71.jpg" alt="Contact"/></div>
+                                     */}
+                                     <h> Profile Picture </h> 
+                                      <Photo user={props.auth.user.username} />
+                                    {/* <Upload user={props.auth.user.username} email={props.auth.user.attributes.email}/>                         */}
+
+                                    {/* <h3 className="m0 text-bold">Patrick Star</h3> */}
+                                    {/* <div className="mv-lg">
+                                         <p>Freshman</p>
                                         <p>3rd year student</p>
                                         <p>Undecided</p>
-                                        <p>Ready to learn</p>
-                                    </div>
+                                        <p>Ready to learn</p> 
+                                    </div> */}
                                 </div>
                             </div>
-                            <div className="panel panel-default hidden-xs hidden-sm">
+                            {/* <div className="panel panel-default hidden-xs hidden-sm">
                                 <div className="panel-heading">
                                     <div className="panel-title text-center">Enrolled In</div>
                                 </div>
@@ -78,7 +88,7 @@ export default function Profile(props) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}  
                         </div>
                         <div className="col-md-8">
                             <div className="panel panel-default">

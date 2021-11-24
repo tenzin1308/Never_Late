@@ -3,6 +3,7 @@ import { Grid, Paper } from '@mui/material';
 import ClockLoader from "react-spinners/ClockLoader";
 import Calendar from './Calendar';
 import axios from 'axios';
+import AssignmentList from './AssignmentList';
 
 export default function Dashboard(props) {
     const [loading, setLoading] = useState(false);
@@ -87,13 +88,14 @@ export default function Dashboard(props) {
                     :
                     <Grid container display="grid" gridAutoFlow="column" spacing={1}>
                         <Grid item>
-                            <Paper sx={{ textAlign: "center", padding: "5%", minHeight: "45vh", width: "40%", minWidth: "300px" }} >
-                                Add Courses
+                            <Paper sx={{ textAlign: "center", padding: "0", minHeight: "45vh", width: "100%", minWidth: "300px" }} >
+                                 <AssignmentList assignments={assignments}/>
                             </Paper>
+                        
                         </Grid>
                         <Grid item>
                             <Paper sx={2}>
-                                <Calendar assignments={assignments} />
+                                   <Calendar assignments={assignments} />
                             </Paper>
                         </Grid>
                         {/* <Grid item>
@@ -101,7 +103,7 @@ export default function Dashboard(props) {
                                 Due Today
                             </Paper>
                         </Grid> */}
-                    </Grid>
+                    </Grid> 
                         
                 }
             </Grid>

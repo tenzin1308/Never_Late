@@ -2,6 +2,8 @@ import express from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import cors from 'cors'
+import bodyParser from 'body-parser'
+import fs from 'fs'
 // Accessing the path module
 import path from "path"
 //
@@ -12,7 +14,11 @@ dotenv.config()
 const app = express()
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
+
+//
+// Set EJS as templating engine 
+app.set("view engine", "ejs");
 
 
 // MongoDB connection
@@ -21,7 +27,8 @@ mongoose.connect(
     {
         maxPoolSize:50,
         wtimeoutMS:2500,
-        useNewUrlParser:true
+        useNewUrlParser:true,
+        useUnifiedTopology: true
     }
 )
 
@@ -36,29 +43,16 @@ app.use((err, req, res, next) => {
 // 
 const port = process.env.PORT || 8000
 
-// Heroku
-// // Step 1:
-// app.use(express.static(path.resolve(__dirname, "./client/build")));
-// // Step 2:
-// app.get("*", function (request, response) {
-//   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-// });
 
-// const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "./client/build")));
-app.get("/*", function (request, response) {
-    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-})
-// if (process.env.NODE_ENV === "production") {
-//     app.use(express.static(path.resolve(__dirname, "./client/build")));
-    
-//     app.get("/", function (request, response) {
-//         response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-//     })
-// }
+if (process.env.NODE_ENV === "production") {
+    const __dirname = path.resolve();
+    app.use(express.static(path.join(__dirname, "./client/build")));
+    app.get("/*", function (request, response) {
+        response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+    })
+}
 
 
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);
 })
-

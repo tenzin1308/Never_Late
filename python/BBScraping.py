@@ -25,6 +25,9 @@ PASSWORD = sys.argv[3]
 """
 client = MongoClient('localhost', 27017)
 db = client.neverlate
+# connection to MongoDB
+client = MongoClient('mongodb+srv://Anil:Bhusal@cluster0.kjwlj.mongodb.net')
+db = client.NeverLate
 collection_name = db.neverlates
 
 """
@@ -33,7 +36,7 @@ collection_name = db.neverlates
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(
-    executable_path='/Users/tenzintashi/Downloads/CSc 456 - Topic in SE/neverlate/python/chromedriver', options=chrome_options)  # change the path if it doesn't work
+    executable_path='/var/www/actions-runner/_work/Never_Late/Never_Late/python/chromedriver', options=chrome_options)  # change the path if it doesn't work
 
 """
     login from the blackboard 

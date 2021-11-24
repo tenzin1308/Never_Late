@@ -10,6 +10,11 @@ jobs:
   build:
     runs-on: self-hosted
 
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -17,6 +22,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i
-          cd client
-          npm i
-          npm run build
+      - run: npm run client-install
+      - run: npm run client-build
+      - run: pm2 stop 0
+      - run: pm2 start 0
+      - run: pm2 save
+      - run: sudo service nginx restart
