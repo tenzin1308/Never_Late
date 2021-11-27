@@ -23,8 +23,6 @@ PASSWORD = sys.argv[3]
 """
     connection to MongoDB
 """
-client = MongoClient('localhost', 27017)
-db = client.neverlate
 # connection to MongoDB
 client = MongoClient('mongodb+srv://Anil:Bhusal@cluster0.kjwlj.mongodb.net')
 db = client.NeverLate
