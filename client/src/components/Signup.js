@@ -70,6 +70,7 @@ export default class Signup extends Component {
     }
 
     render() {
+        
         return (
             <section className="section auth">
                 <div className="container">
@@ -115,7 +116,14 @@ export default class Signup extends Component {
                                     placeholder="Password"
                                     value={this.state.password}
                                     onChange={this.onInputChange}
+
                                 />
+                                 <div>
+                            <div>Contains more than 10 characters</div>
+                            <div> Contains numbers</div>
+                            <div>Contains UpperCase</div>
+                            <div>Contains Symbols</div>
+                        </div>
                                 <span className="icon is-small is-left">
                                     <i className="fas fa-lock"></i>
                                 </span>
