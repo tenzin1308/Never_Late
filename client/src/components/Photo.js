@@ -53,15 +53,11 @@ const uploadImage = async () => {
 
 
     return(
-        <div>
+        <div data-testid='photo-${user}'>
               <Image
              style = {{width: 100, height:100}}
             cloudName= "df7tgik1m"
             publicId={publicId}/>
-            
-            
-
-
             <input type="file"
             onChange={(event) =>{
                setImageSelected(event.target.files[0]);
